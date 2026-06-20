@@ -83,16 +83,7 @@ export const Navbar: React.FC = () => {
       <div className="flex items-center gap-4">
 
 
-        {/* Notifications Indicator */}
-        <button 
-          className="p-1.5 rounded-full border border-border bg-white text-text-deep hover:bg-background/80 relative transition-smooth"
-          aria-label="View Alerts Drawer"
-        >
-          <LucideBell className="h-4 w-4" />
-          <span className="absolute -top-1 -right-1 bg-telemetry-critical text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-bounce">
-            2
-          </span>
-        </button>
+
 
         {/* Credits & Coins */}
         <div className="hidden sm:flex items-center gap-3 text-[10px] font-bold uppercase tracking-wider">

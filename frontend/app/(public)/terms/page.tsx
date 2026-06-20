@@ -13,7 +13,7 @@ export default function TermsPage() {
         <div className="flex items-center justify-between border-b border-border/80 pb-4">
           <Link href="/login" className="flex items-center gap-2 text-text-deep font-bold hover:opacity-80 transition-smooth">
             <LucideChevronLeft className="h-4 w-4" />
-            <span className="text-xs uppercase font-black">Back to login</span>
+            <span className="text-xs uppercase font-black">Back </span>
           </Link>
           <div className="flex items-center gap-2 text-text-deep font-bold text-sm">
             <LucideLeaf className="h-4 w-4" />
