@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  /* Premium EcoSphere Brand Color Tokens */
+  --background: #F6FAF4;
+  /* Calm, organic green-tinted background */
+  --surface: #FFFFFF;
+  /* Clean white containers */
+  --border: #E6EFE3;
+  /* Gentle organic boundaries */
+  --text-deep: #1B5E20;
+  /* Editorial deep forest green */
+  --text-muted: #558B2F;
+  /* Calm secondary leaf text */
+
+  /* Central Telemetry Color Markers */
+  --telemetry-healthy: #2E7D32;
+  /* Verified deep green */
+  --telemetry-neutral: #81D4FA;
+  /* Accent blue */
+  --telemetry-warning: #FFB300;
+  /* Ambient yellow */
+  --telemetry-critical: #E53935;
+  /* Direct red warnings */
+}
+
+body {
+  color: var(--text-deep);
+  background-color: var(--background);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-merriweather), Georgia, serif;
+}
+
+/* Custom premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4D3BE;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Premium micro-animations & transitions */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 239, 227, 0.6);
+}

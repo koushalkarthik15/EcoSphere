@@ -1,0 +1,20 @@
+{
+  "john@kompany.com": {
+    "id": "local_e02d78ab",
+    "name": "john kompany",
+    "email": "john@kompany.com",
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=john_kompany",
+    "selectedRole": "urban",
+    "password_hash": "5beb0641b41a8b3c15ab7641ac6ee6ec168dfe0afd7f51ddb155df477f27ed08",
+    "salt": "b01bd1f5e35207fc0cbd4045a4001668"
+  },
+  "tester@example.com": {
+    "id": "local_e3117290",
+    "name": "Test User",
+    "email": "tester@example.com",
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Test_User",
+    "selectedRole": "urban",
+    "password_hash": "c8f149e0fea21651c620aae6838b32d51cbf29ba1af07aa3ce96431871e71e8f",
+    "salt": "1fc8949fa9ea30bfddece379cff3e4d3"
+  }
+}
