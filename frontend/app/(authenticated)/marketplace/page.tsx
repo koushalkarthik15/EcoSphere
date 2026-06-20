@@ -1,5 +1,5 @@
 "use client";
-
+import { useAuth } from "../../../lib/providers/AuthProvider";
 import React, { useState, useEffect } from "react";
 import { useCarbon } from "../../../lib/providers/CarbonProvider";
 import { useRole } from "../../../lib/providers/RoleProvider";
