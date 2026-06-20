@@ -22,7 +22,7 @@ class Settings(BaseSettings):
 
     # NEW: comma-separated list of allowed frontend origins
     CORS_ORIGINS: str = Field(
-        default="http://localhost:3000",
+        default="http://localhost:3000,https://eco-sphere-ntbi-git-main-koushalkarthik15s-projects.vercel.app",
         alias="CORS_ORIGINS"
     )
 
