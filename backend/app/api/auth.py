@@ -201,7 +201,7 @@ async def local_login(login_data: LocalLoginRequest, response: Response, request
         value=session_jwt,
         httponly=True,
         max_age=max_age,
-        secure=is_secure,
+        secure=True,
         samesite="none",
         path="/"
     )
@@ -247,7 +247,7 @@ async def login(login_data: LoginRequest, response: Response, request: Request):
         value=session_jwt,
         httponly=True,
         max_age=86400 * 7, # 7 days
-        secure=is_secure,
+        secure=True,
         samesite="none",
         path="/"
     )
@@ -300,14 +300,13 @@ async def update_role(
     }
     
     new_jwt = SecurityManager.create_session_token(updated_profile)
-    is_secure = request.url.scheme == "https"
     
     response.set_cookie(
         key=COOKIE_NAME,
         value=new_jwt,
         httponly=True,
         max_age=86400,
-        secure=is_secure,
+        secure=True,
         samesite="none",
         path="/"
     )
