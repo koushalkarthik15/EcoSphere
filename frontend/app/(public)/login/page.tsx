@@ -329,14 +329,6 @@ export default function LoginPage() {
               <Link href="/privacy" className="hover:text-text-deep transition-smooth">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-text-deep transition-smooth">Terms of Service</Link>
             </div>
-            <a 
-              href="https://promptwars.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-1 hover:text-text-deep transition-smooth text-[9px] text-[#2E7D32] bg-[#DAEED2] px-2 py-0.5 rounded-full"
-            >
-              PromptWars Challenge
-            </a>
           </div>
 
         </div>
