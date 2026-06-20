@@ -202,7 +202,7 @@ async def local_login(login_data: LocalLoginRequest, response: Response, request
         httponly=True,
         max_age=max_age,
         secure=is_secure,
-        samesite="lax",
+        samesite="none",
         path="/"
     )
     
@@ -246,9 +246,9 @@ async def login(login_data: LoginRequest, response: Response, request: Request):
         key=COOKIE_NAME,
         value=session_jwt,
         httponly=True,
-        max_age=86400, # 1 day
+        max_age=86400 * 7, # 7 days
         secure=is_secure,
-        samesite="lax",
+        samesite="none",
         path="/"
     )
     
@@ -308,7 +308,7 @@ async def update_role(
         httponly=True,
         max_age=86400,
         secure=is_secure,
-        samesite="lax",
+        samesite="none",
         path="/"
     )
     
