@@ -82,6 +82,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(profile);
         setMode(profile.mode || (savedMode as any) || "google");
         setPermissions(["read:telemetry", "write:telemetry", "read:marketplace", "write:marketplace"]);
+        setClientCookie("ecosphere_session", "authenticated_session", 1);
       } else {
         setUser(null);
         setMode(null);
@@ -180,6 +181,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem("ecosphere_session_mode", "local");
       }
       
+      setClientCookie("ecosphere_session", "authenticated_session", rememberMe ? 7 : 1);
+      
       addToast("Successfully authenticated via Local EcoSphere Account.", "success", "Welcome Back");
       return profile;
     } catch (e: any) {
@@ -213,6 +216,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem("ecosphere_session_mode", "google");
       }
       
+      setClientCookie("ecosphere_session", "authenticated_session", 7);
+      
       addToast("Successfully authenticated with Google OAuth.", "success", "Welcome");
       return profile;
     } catch (e: any) {
@@ -240,6 +245,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.removeItem("ecosphere_session_mode");
       }
       addToast("Successfully signed out.", "info", "Logged Out");
+      
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
+      }
     } catch (e) {
       console.error(e);
       setUser(null);
@@ -248,6 +257,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       deleteClientCookie("ecosphere_session");
       if (typeof window !== "undefined") {
         localStorage.removeItem("ecosphere_session_mode");
+      }
+      
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
       }
     } finally {
       setIsLoading(false);
