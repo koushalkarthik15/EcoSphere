@@ -17,6 +17,7 @@ import { useToasts } from "../../../lib/providers/ToastProvider";
 import { HeroSection } from "../../../components/ui/HeroSection";
 import { useAuth } from "../../../lib/providers/AuthProvider";
 import { URBAN_DEMO_DATA } from "../../../lib/demoData";
+import { API_BASE_URL } from "../../../lib/apiClient";
 
 export const UrbanDashboard: React.FC = () => {
   const { currentLocation } = useTelemetry();
@@ -67,7 +68,7 @@ export const UrbanDashboard: React.FC = () => {
     }
     
     try {
-      const res = await fetch("http://localhost:8000/api/v1/urban/calculate", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/urban/calculate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ distance_km: distance, mode: commuteMode }),
@@ -117,7 +118,7 @@ export const UrbanDashboard: React.FC = () => {
       };
 
       // 1. Fetch telemetry
-      const telRes = await fetch("http://localhost:8000/api/v1/urban/telemetry", {
+      const telRes = await fetch(`${API_BASE_URL}/api/v1/urban/telemetry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestPayload),
@@ -128,7 +129,7 @@ export const UrbanDashboard: React.FC = () => {
       }
 
       // 2. Fetch recommendations
-      const recRes = await fetch("http://localhost:8000/api/v1/urban/recommendations", {
+      const recRes = await fetch(`${API_BASE_URL}/api/v1/urban/recommendations`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestPayload),
@@ -139,7 +140,7 @@ export const UrbanDashboard: React.FC = () => {
       }
 
       // 3. Fetch challenges
-      const chRes = await fetch("http://localhost:8000/api/v1/urban/challenges", {
+      const chRes = await fetch(`${API_BASE_URL}/api/v1/urban/challenges`, {
         credentials: "include"
       });
       if (chRes.ok) {
@@ -147,7 +148,7 @@ export const UrbanDashboard: React.FC = () => {
       }
 
       // 4. Fetch achievements
-      const achRes = await fetch("http://localhost:8000/api/v1/urban/achievements", {
+      const achRes = await fetch(`${API_BASE_URL}/api/v1/urban/achievements`, {
         credentials: "include"
       });
       if (achRes.ok) {
@@ -155,7 +156,7 @@ export const UrbanDashboard: React.FC = () => {
       }
 
       // 5. Fetch summary
-      const sumRes = await fetch("http://localhost:8000/api/v1/urban/summary", {
+      const sumRes = await fetch(`${API_BASE_URL}/api/v1/urban/summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestPayload),

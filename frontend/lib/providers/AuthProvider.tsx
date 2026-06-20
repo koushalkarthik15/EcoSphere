@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useToasts } from "./ToastProvider";
+import { API_BASE_URL } from "../apiClient";
 
 export interface UserProfile {
   id: string;
@@ -72,7 +73,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return;
       }
       
-      const res = await fetch("http://localhost:8000/api/v1/auth/session", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/auth/session`, {
         headers: { "Content-Type": "application/json" },
         credentials: "include"
       });
@@ -132,7 +133,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const registerLocal = async (name: string, email: string, password: string, preferredRole: string): Promise<UserProfile> => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/register", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password, preferredRole }),
@@ -158,7 +159,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const loginLocal = async (email: string, password: string, rememberMe: boolean): Promise<UserProfile> => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/local-login", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/auth/local-login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, rememberMe }),
@@ -192,7 +193,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (idToken: string): Promise<UserProfile> => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id_token: idToken }),
@@ -226,7 +227,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       if (mode !== "demo") {
-        await fetch("http://localhost:8000/api/v1/auth/logout", { 
+        await fetch(`${API_BASE_URL}/api/v1/auth/logout`, { 
           method: "POST",
           credentials: "include"
         });
@@ -261,7 +262,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/role", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/auth/role`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ role }),

@@ -21,6 +21,7 @@ import {
   LucideHistory,
   LucideArrowUpRight
 } from "lucide-react";
+import { API_BASE_URL } from "../../lib/apiClient";
 
 export const AssistantPanel: React.FC = () => {
   const { role } = useRole();
@@ -37,7 +38,7 @@ export const AssistantPanel: React.FC = () => {
   const fetchRecommendations = async () => {
     setLoading(true);
     try {
-      const url = `http://localhost:8000/api/v1/intelligence/recommendations?role=${role}&lat=${currentLocation.lat}&lng=${currentLocation.lng}`;
+      const url = `${API_BASE_URL}/api/v1/intelligence/recommendations?role=${role}&lat=${currentLocation.lat}&lng=${currentLocation.lng}`;
       const res = await fetch(url);
       if (res.ok) {
         setRecommendations(await res.json());

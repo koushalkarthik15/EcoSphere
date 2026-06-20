@@ -23,6 +23,7 @@ import { LucideCreditCard, LucideTrendingUp, LucideInfo } from "lucide-react";
 import { HeroSection } from "../../../components/ui/HeroSection";
 import { useAuth } from "../../../lib/providers/AuthProvider";
 import { INDUSTRY_DEMO_DATA } from "../../../lib/demoData";
+import { API_BASE_URL } from "../../../lib/apiClient";
 
 export const IndustryDashboard: React.FC = () => {
   const { currentLocation } = useTelemetry();
@@ -73,7 +74,7 @@ export const IndustryDashboard: React.FC = () => {
     }
     
     try {
-      const summaryRes = await fetch("http://localhost:8000/api/v1/industry/summary", {
+      const summaryRes = await fetch(`${API_BASE_URL}/api/v1/industry/summary`, {
         credentials: "include"
       });
       if (summaryRes.ok) {
@@ -170,7 +171,7 @@ export const IndustryDashboard: React.FC = () => {
       const payload = { facility_id: facilityId };
 
       // 1. Emission Analysis
-      const emRes = await fetch("http://localhost:8000/api/v1/industry/emission-analysis", {
+      const emRes = await fetch(`${API_BASE_URL}/api/v1/industry/emission-analysis`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -182,7 +183,7 @@ export const IndustryDashboard: React.FC = () => {
       }
 
       // 2. Gas Detection
-      const gasRes = await fetch("http://localhost:8000/api/v1/industry/gas-detection", {
+      const gasRes = await fetch(`${API_BASE_URL}/api/v1/industry/gas-detection`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -193,7 +194,7 @@ export const IndustryDashboard: React.FC = () => {
       }
 
       // 3. Compliance checks
-      const compRes = await fetch("http://localhost:8000/api/v1/industry/compliance", {
+      const compRes = await fetch(`${API_BASE_URL}/api/v1/industry/compliance`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -204,7 +205,7 @@ export const IndustryDashboard: React.FC = () => {
       }
 
       // 4. Solar potential
-      const solarRes = await fetch("http://localhost:8000/api/v1/industry/solar-analysis", {
+      const solarRes = await fetch(`${API_BASE_URL}/api/v1/industry/solar-analysis`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -216,7 +217,7 @@ export const IndustryDashboard: React.FC = () => {
       }
 
       // 5. Financial report
-      const finRes = await fetch("http://localhost:8000/api/v1/industry/financial-report", {
+      const finRes = await fetch(`${API_BASE_URL}/api/v1/industry/financial-report`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -228,7 +229,7 @@ export const IndustryDashboard: React.FC = () => {
       }
 
       // 6. Marketplace Recommendation
-      const recRes = await fetch("http://localhost:8000/api/v1/industry/marketplace-recommendation", {
+      const recRes = await fetch(`${API_BASE_URL}/api/v1/industry/marketplace-recommendation`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -244,7 +245,7 @@ export const IndustryDashboard: React.FC = () => {
       }
 
       // 7. Historical decadal trends
-      const histRes = await fetch(`http://localhost:8000/api/v1/industry/historical-trends?facility_id=${facilityId}`, {
+      const histRes = await fetch(`${API_BASE_URL}/api/v1/industry/historical-trends?facility_id=${facilityId}`, {
         credentials: "include"
       });
       if (histRes.ok) {

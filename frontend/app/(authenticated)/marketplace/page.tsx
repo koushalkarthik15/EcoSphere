@@ -21,8 +21,8 @@ import { NotificationCenter, MarketplaceNotification } from "../../../features/m
 import { LucideCreditCard, LucideCoins, LucideInfo, LucideCheckCircle } from "lucide-react";
 import { HeroSection } from "../../../components/ui/HeroSection";
 
-import { useAuth } from "../../../lib/providers/AuthProvider";
 import { MARKETPLACE_DEMO_DATA } from "../../../lib/demoData";
+import { API_BASE_URL } from "../../../lib/apiClient";
 
 export default function MarketplacePage() {
   const { carbonBalance, marketplaceBalance, addCredits, spendCoins, purchaseCredits } = useCarbon();
@@ -82,7 +82,7 @@ export default function MarketplacePage() {
     
     try {
       // 1. Fetch summary
-      const sumRes = await fetch("http://localhost:8000/api/v1/marketplace/summary", {
+      const sumRes = await fetch(`${API_BASE_URL}/api/v1/marketplace/summary`, {
         credentials: "include"
       });
       if (sumRes.ok) {
@@ -90,7 +90,7 @@ export default function MarketplacePage() {
       }
       
       // 2. Fetch projects
-      const projRes = await fetch("http://localhost:8000/api/v1/marketplace/projects", {
+      const projRes = await fetch(`${API_BASE_URL}/api/v1/marketplace/projects`, {
         credentials: "include"
       });
       if (projRes.ok) {
@@ -98,7 +98,7 @@ export default function MarketplacePage() {
       }
 
       // 3. Fetch listings
-      const listRes = await fetch("http://localhost:8000/api/v1/marketplace/listings", {
+      const listRes = await fetch(`${API_BASE_URL}/api/v1/marketplace/listings`, {
         credentials: "include"
       });
       if (listRes.ok) {
@@ -106,7 +106,7 @@ export default function MarketplacePage() {
       }
 
       // 4. Fetch wallet metadata
-      const walRes = await fetch("http://localhost:8000/api/v1/marketplace/wallet", {
+      const walRes = await fetch(`${API_BASE_URL}/api/v1/marketplace/wallet`, {
         credentials: "include"
       });
       if (walRes.ok) {
@@ -114,7 +114,7 @@ export default function MarketplacePage() {
       }
 
       // 5. Fetch transactions history
-      const txRes = await fetch("http://localhost:8000/api/v1/marketplace/transactions", {
+      const txRes = await fetch(`${API_BASE_URL}/api/v1/marketplace/transactions`, {
         credentials: "include"
       });
       if (txRes.ok) {
@@ -122,7 +122,7 @@ export default function MarketplacePage() {
       }
 
       // 6. Fetch price history
-      const priceRes = await fetch("http://localhost:8000/api/v1/marketplace/price-history", {
+      const priceRes = await fetch(`${API_BASE_URL}/api/v1/marketplace/price-history`, {
         credentials: "include"
       });
       if (priceRes.ok) {
@@ -277,7 +277,7 @@ export default function MarketplacePage() {
         amount_tons: buyVolume
       };
 
-      const res = await fetch("http://localhost:8000/api/v1/marketplace/purchase", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/marketplace/purchase`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -380,7 +380,7 @@ export default function MarketplacePage() {
         listing_price_coins: sellPrice
       };
 
-      const res = await fetch("http://localhost:8000/api/v1/marketplace/sell", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/marketplace/sell`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -437,7 +437,7 @@ export default function MarketplacePage() {
       return;
     }
     try {
-      const res = await fetch("http://localhost:8000/api/v1/marketplace/convert-rewards", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/marketplace/convert-rewards`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ credits_amount: amount }),

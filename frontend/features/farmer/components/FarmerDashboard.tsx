@@ -26,6 +26,7 @@ import { HeroSection } from "../../../components/ui/HeroSection";
 import { useAuth } from "../../../lib/providers/AuthProvider";
 import { FARMER_DEMO_DATA } from "../../../lib/demoData";
 import { downloadCSV, downloadJSON, downloadPDF } from "../../../lib/exportUtils";
+import { API_BASE_URL } from "../../../lib/apiClient";
 
 export const FarmerDashboard: React.FC = () => {
   const { currentLocation } = useTelemetry();
@@ -61,7 +62,7 @@ export const FarmerDashboard: React.FC = () => {
     
     try {
       // 1. Fetch Farmer Summary
-      const summaryRes = await fetch("http://localhost:8000/api/v1/farmer/summary", {
+      const summaryRes = await fetch(`${API_BASE_URL}/api/v1/farmer/summary`, {
         credentials: "include"
       });
       if (summaryRes.ok) {
@@ -76,7 +77,7 @@ export const FarmerDashboard: React.FC = () => {
       }
 
       // 2. Fetch Notifications
-      const notifRes = await fetch("http://localhost:8000/api/v1/farmer/notifications", {
+      const notifRes = await fetch(`${API_BASE_URL}/api/v1/farmer/notifications`, {
         credentials: "include"
       });
       if (notifRes.ok) {
@@ -171,7 +172,7 @@ export const FarmerDashboard: React.FC = () => {
       const payload = { field_id: fieldId };
 
       // 1. Fetch satellite analysis
-      const satRes = await fetch("http://localhost:8000/api/v1/farmer/satellite-analysis", {
+      const satRes = await fetch(`${API_BASE_URL}/api/v1/farmer/satellite-analysis`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -182,7 +183,7 @@ export const FarmerDashboard: React.FC = () => {
       }
 
       // 2. Fetch fire detection
-      const fireRes = await fetch("http://localhost:8000/api/v1/farmer/fire-detection", {
+      const fireRes = await fetch(`${API_BASE_URL}/api/v1/farmer/fire-detection`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -193,7 +194,7 @@ export const FarmerDashboard: React.FC = () => {
       }
 
       // 3. Fetch carbon calculations ledger
-      const ledgerRes = await fetch("http://localhost:8000/api/v1/farmer/carbon-ledger", {
+      const ledgerRes = await fetch(`${API_BASE_URL}/api/v1/farmer/carbon-ledger`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -204,7 +205,7 @@ export const FarmerDashboard: React.FC = () => {
       }
 
       // 4. Fetch credits eligibility
-      const creditRes = await fetch("http://localhost:8000/api/v1/farmer/credit-verification", {
+      const creditRes = await fetch(`${API_BASE_URL}/api/v1/farmer/credit-verification`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
