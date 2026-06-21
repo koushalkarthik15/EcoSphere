@@ -1,94 +1,257 @@
-# EcoSphere Environmental Intelligence Platform
+# 🌍 EcoSphere
 
-EcoSphere is a single-page environmental intelligence platform designed to empower urban citizens, farmers, and industries with real-time telemetry, mapping, and a shared carbon marketplace.
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-## 🚀 Overview
+**EcoSphere** is an AI-powered environmental intelligence platform that combines satellite imagery, climate datasets, and geospatial analytics to help individuals, industries, and policymakers understand environmental impact and make sustainable decisions.
 
-The EcoSphere platform consists of three core business domains:
-1. **Urban Citizen**: Focuses on transit options, historical air quality indices, and route recommendations mapping against Sentinel-5P gas spectrometry telemetry.
-2. **Farmer**: Provides crop field analytics, Normalized Difference Vegetation Index (NDVI) monitoring via Copernicus Sentinel-2, and active stubble burn fire alerts via NASA FIRMS.
-3. **Industry**: Facilitates gas spectrometry analysis, industrial asset boundaries overlaying, and emission telemetry visualization.
+Developed for hackathons focused on climate technology and space-based innovation, EcoSphere demonstrates how Earth observation data can be transformed into actionable insights through an intuitive web platform.
 
-All modules share unified Google Identity OAuth 2.0 authentication, carbon calculations, and a marketplace.
+---
 
-## 🛠️ Technology Stack
+# Problem Statement
 
-- **Frontend**: Next.js 15 (App Router), TypeScript, TailwindCSS, shadcn/ui, TanStack Query, Framer Motion, Google Maps JS API.
-- **Backend**: FastAPI (Python), PyTest, Pydantic Settings, Uvicorn.
-- **Infrastructure**: Docker & Docker Compose.
+Climate change decisions are often made using fragmented and difficult-to-access environmental datasets. While satellite providers generate vast amounts of valuable information, most organizations and individuals cannot easily integrate this data into day-to-day sustainability planning.
 
-## 📁 Monorepo Structure
+EcoSphere bridges this gap by converting satellite observations and environmental APIs into meaningful recommendations, interactive visualizations, and carbon intelligence.
+
+---
+
+# Key Features
+
+* Interactive environmental dashboard
+* Live satellite intelligence
+* Carbon footprint analytics
+* AI-powered sustainability recommendations
+* Carbon credit marketplace prototype
+* Climate Trace emissions visualization
+* NASA FIRMS wildfire monitoring
+* Copernicus Earth observation integration
+* Google Earth Engine support
+* Multi-role dashboards (Urban Citizen, Farmer, Industry)
+* Secure authentication with Demo Mode
+* Responsive modern UI
+
+---
+
+# Project Structure
+
+```text
+EcoSphere/
+├── backend/                # FastAPI backend service
+│   ├── app/                # Main application logic
+│   │   ├── api/            # API routing handlers
+│   │   ├── core/           # Config and security
+│   │   ├── models/         # Pydantic schemas
+│   │   └── services/       # External API integrations (FIRMS, GEE, etc.)
+│   ├── tests/              # Python test suite
+│   ├── Dockerfile          # Backend containerization
+│   └── requirements.txt    # Python dependencies
+├── frontend/               # Next.js frontend application
+│   ├── app/                # Next.js 15 App Router
+│   ├── components/         # Reusable UI components
+│   ├── features/           # Domain-specific components (Urban, Farmer, Industry)
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Shared utilities and context providers
+│   ├── styles/             # Global CSS and Tailwind directives
+│   ├── types/              # Shared TypeScript interfaces
+│   ├── Dockerfile          # Frontend containerization
+│   └── package.json        # Node dependencies
+└── README.md               # Project documentation
+```
+
+---
+
+# Architecture
+
+Frontend (Next.js + React + TypeScript)
+
+↓
+
+FastAPI Backend
+
+↓
+
+Environmental Intelligence Layer
+
+* Climate Trace API
+* NASA FIRMS
+* Copernicus
+* Google Earth Engine
+* Google Maps Platform
+
+↓
+
+Visualization & Decision Support
+
+---
+
+# Technology Stack
+
+## Frontend
+
+* Next.js 15
+* React
+* TypeScript
+* Tailwind CSS
+* Google Maps JavaScript API
+
+## Backend
+
+* FastAPI
+* Python
+* Pydantic
+* JWT Authentication
+
+## Environmental Data Sources
+
+* Climate Trace
+* NASA FIRMS
+* Copernicus Data Space Ecosystem
+* Google Earth Engine
+
+## Deployment
+
+* Vercel
+* GitHub
+
+---
+
+# User Roles
+
+### Urban Citizen
+
+* Carbon footprint estimation
+* Sustainability recommendations
+* Environmental awareness dashboard
+
+### Farmer
+
+* Satellite-based land monitoring
+* Crop and environmental insights
+* Fire detection alerts
+
+### Industry
+
+* Emissions monitoring
+* Sustainability reporting
+* Carbon credit recommendations
+
+---
+
+# AI Recommendation Engine
+
+EcoSphere generates contextual sustainability recommendations using:
+
+* Satellite observations
+* Environmental telemetry
+* Air quality indicators
+* Carbon emission datasets
+* Climate Trace emissions
+* Wildfire information
+* User role and location
+
+---
+
+# API Integrations
+
+| Service             | Purpose                    |
+| ------------------- | -------------------------- |
+| Climate Trace       | Global emissions data      |
+| NASA FIRMS          | Active wildfire monitoring |
+| Copernicus          | Earth observation imagery  |
+| Google Earth Engine | Remote sensing analysis    |
+| Google Maps         | Interactive mapping        |
+
+---
+
+# Security
+
+* JWT Authentication
+* Role-based access
+* Environment variable configuration
+* CORS protection
+* Rate limiting
+* Secure HTTP headers
+
+---
+
+# Future Roadmap
+
+* Real-time satellite streaming
+* Carbon credit verification
+* ML-based emission prediction
+* Multi-country expansion
+* IoT sensor integration
+* Mobile application
+* Advanced sustainability reporting
+
+---
+
+# Installation
+
+```bash
+git clone https://github.com/koushalkarthik15/EcoSphere.git
+
+cd EcoSphere
+```
+
+Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+# Environment Variables
+
+Frontend
 
 ```
-carbonfootprint/
-├── frontend/               # Next.js App Router Frontend application
-├── backend/                # FastAPI Backend service
-├── shared/                 # Monorepo-wide shared modules & business logic
-└── .agents/                # Persona templates & skills (Untouched)
+NEXT_PUBLIC_API_URL
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+NEXT_PUBLIC_CLIMATE_TRACE_API
 ```
 
-For domain-specific guidelines, refer to:
-- [Frontend README](file:///c:/Users/Vaishnavi/OneDrive/Desktop/karthik-proj/carbonfootprint/frontend/README.md)
-- [Backend README](file:///c:/Users/Vaishnavi/OneDrive/Desktop/karthik-proj/carbonfootprint/backend/README.md)
-- [Shared Services README](file:///c:/Users/Vaishnavi/OneDrive/Desktop/karthik-proj/carbonfootprint/shared/README.md)
+Backend
 
-## 🌐 API Integrations
-
-EcoSphere integrates with the following external data providers:
-- **Google Earth Engine (GEE)**: Fetches `Sentinel-2` and `Landsat 8/9` surface reflectance and thermal imagery for NDVI and surface temperature visualizations.
-- **NASA FIRMS**: Fetches active fire and thermal anomaly data using the `MODIS` sensor to identify potential stubble burning.
-- **Google Maps JS API**: Renders geospatial data on an interactive mapping interface.
-
-## 🧰 Demo Mode & Environment Variables
-
-To operate the application, you must provide certain environment variables. If you do not have active API credentials, the application will gracefully fall back to **Demo Mode**.
-
-**Required Environment Variables (`frontend/.env.local` & `backend/.env`):**
-```env
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="your_maps_api_key" # Or "dummy_key" to enable offline fallback map
-NEXT_PUBLIC_API_URL="http://localhost:8000/api/v1"
-GOOGLE_APPLICATION_CREDENTIALS="path/to/service_account.json" # For Earth Engine
-EE_PROJECT_ID="your_ee_project"
+```
+JWT_SECRET
+GOOGLE_MAPS_API_KEY
+NASA_FIRMS_API
+COPERNICUS_CLIENT_ID
+COPERNICUS_CLIENT_SECRET
+GOOGLE_EARTH_ENGINE_PROJECT
 ```
 
-**Demo Mode Behavior**:
-- **Maps**: If `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` is not provided or set to `dummy_key`, the frontend will render simulated vector map overlays instead of the live Google Map.
-- **Satellites & NASA FIRMS**: If external API calls fail or return no data, the backend seamlessly falls back to cached simulation data, ensuring the UI remains functional for presentation purposes.
+---
 
-## ⚠️ Known Limitations
-- The integration with NASA FIRMS requires a 10-day lookback window due to data availability. If no fires occurred in the past 10 days at the queried coordinates, the system accurately reports "No active fire hotspots detected".
-- The Google Earth Engine module attempts a cascading search window (30-day, 90-day, 180-day) and sensor fallback (Sentinel-2 -> Landsat-9 -> Landsat-8) to find cloud-free imagery. In highly cloudy regions or during certain seasons, imagery may still be unavailable.
-## 🚀 Getting Started (Local Development)
+# Project Highlights
 
-1. **Install Dependencies**
-   - Frontend: `cd frontend && npm install`
-   - Backend: `cd backend && pip install -r requirements.txt`
+* Space technology for sustainability
+* Satellite-powered environmental intelligence
+* AI-assisted decision support
+* Modern full-stack architecture
+* Scalable API-first design
+* Production-ready deployment
 
-2. **Environment Variables**
-   - Copy `frontend/.env.example` to `frontend/.env.local`
-   - Copy `backend/.env.example` to `backend/.env`
-   - Populate variables with API keys or use `dummy_key` for offline sandbox.
+---
 
-3. **Run Application**
-   - Frontend: `npm run dev`
-   - Backend: `uvicorn app.main:app --reload`
+# Vision
 
-## 🌍 Production Deployment
-
-EcoSphere is optimized for production deployment via Docker (Standalone Next.js) and standard Uvicorn/Gunicorn servers.
-
-1. **Build Frontend (Standalone)**
-   ```bash
-   cd frontend
-   npm run build
-   # Output is optimized in the .next/standalone directory
-   ```
-
-2. **Run Backend (Production Mode)**
-   ```bash
-   cd backend
-   uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
-   ```
-
-3. **Security Headers & CORS**
-   Ensure `FRONTEND_URL` is set in the backend environment to securely restrict CORS. Security headers (OWASP Helmet equivalents) are enabled by default on the backend.
+EcoSphere aims to make environmental intelligence accessible to everyone by combining AI, satellite imagery, and geospatial analytics into a unified platform that supports informed climate action.
